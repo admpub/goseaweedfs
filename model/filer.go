@@ -96,11 +96,14 @@ func (f *Filer) UploadFile(filePath, newFilerPath, collection, ttl string) (resu
 }
 
 // Delete a file/dir
-func (f *Filer) Delete(pathname string) (err error) {
+func (f *Filer) Delete(pathname string, recursive ...bool) (err error) {
 	if !strings.HasPrefix(pathname, "/") {
 		pathname = "/" + pathname
 	}
-
+	if len(recursive) > 0 && recursive[0] {
+		_, err = f.HTTPClient.Delete(f.URL + pathname + "?recursive=true")
+		return
+	}
 	_, err = f.HTTPClient.Delete(f.URL + pathname)
 	return
 }
