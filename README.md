@@ -1,10 +1,10 @@
 # goseaweedfs
 
 [![Build Status](https://travis-ci.org/linxGnu/goseaweedfs.svg?branch=master)](https://travis-ci.org/linxGnu/goseaweedfs)
-[![Go Report Card](https://goreportcard.com/badge/github.com/linxGnu/goseaweedfs)](https://goreportcard.com/report/github.com/linxGnu/goseaweedfs)
+[![Go Report Card](https://goreportcard.com/badge/github.com/admpub/goseaweedfs)](https://goreportcard.com/report/github.com/admpub/goseaweedfs)
 [![Coverage Status](https://coveralls.io/repos/github/linxGnu/goseaweedfs/badge.svg?branch=master)](https://coveralls.io/github/linxGnu/goseaweedfs?branch=master)
-[![godoc](https://img.shields.io/badge/docs-GoDoc-green.svg)](https://godoc.org/github.com/linxGnu/goseaweedfs)
-[![license](http://img.shields.io/badge/license-MIT-red.svg?style=flat)](https://github.com/linxGnu/goseaweedfs/blob/master/LICENSE)
+[![godoc](https://img.shields.io/badge/docs-GoDoc-green.svg)](https://godoc.org/github.com/admpub/goseaweedfs)
+[![license](http://img.shields.io/badge/license-MIT-red.svg?style=flat)](https://github.com/admpub/goseaweedfs/blob/master/LICENSE)
 
 A complete Golang client for [SeaweedFS](https://github.com/chrislusf/seaweedfs). Inspired by:
 - [tnextday/goseaweed](https://github.com/tnextday/goseaweed)
@@ -12,11 +12,11 @@ A complete Golang client for [SeaweedFS](https://github.com/chrislusf/seaweedfs)
 
 ## Installation
 ```
-go get -u github.com/linxGnu/goseaweedfs
+go get -u github.com/admpub/goseaweedfs
 ```
 
 ## Usage
-Please refer to [Test Cases](https://github.com/linxGnu/goseaweedfs/blob/master/seaweed_test.go) for sample code.
+Please refer to [Test Cases](https://github.com/admpub/goseaweedfs/blob/master/seaweed_test.go) for sample code.
 
 ## Supported
 

@@ -18,7 +18,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/linxGnu/goseaweedfs/model"
+	"github.com/admpub/goseaweedfs/model"
 )
 
 var sw *Seaweed
