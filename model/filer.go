@@ -3,6 +3,7 @@ package model
 import (
 	"encoding/json"
 	"io"
+	"io/ioutil"
 	"strings"
 
 	"github.com/admpub/goseaweedfs/libs"
@@ -68,6 +69,19 @@ func (f *Filer) Dir(pathname string) (result *Dir, err error) {
 	}
 
 	return
+}
+
+func (c *Filer) DownloadFile(fileURL string) (string, []byte, error) {
+	fileName, rc, err := c.HTTPClient.DownloadFromURL(fileURL)
+	if err != nil {
+		return "", nil, err
+	}
+	defer rc.Close()
+	fileData, err := ioutil.ReadAll(rc)
+	if err != nil {
+		return "", nil, err
+	}
+	return fileName, fileData, nil
 }
 
 // UploadFile a file

@@ -631,11 +631,11 @@ func (c *Seaweed) DownloadFile(fileID string, args url.Values) (string, []byte, 
 	if err != nil {
 		return "", nil, err
 	}
+	defer rc.Close()
 	fileData, err := ioutil.ReadAll(rc)
 	if err != nil {
 		return "", nil, err
 	}
-	defer rc.Close()
 	return fileName, fileData, nil
 
 }
