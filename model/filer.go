@@ -71,8 +71,8 @@ func (f *Filer) Dir(pathname string) (result *Dir, err error) {
 	return
 }
 
-func (c *Filer) DownloadFile(fileURL string) (string, []byte, error) {
-	fileName, rc, err := c.HTTPClient.DownloadFromURL(fileURL)
+func (f *Filer) DownloadFile(fileURL string) (string, []byte, error) {
+	fileName, rc, err := f.HTTPClient.DownloadFromURL(fileURL)
 	if err != nil {
 		return "", nil, err
 	}
@@ -82,6 +82,13 @@ func (c *Filer) DownloadFile(fileURL string) (string, []byte, error) {
 		return "", nil, err
 	}
 	return fileName, fileData, nil
+}
+
+// Download download file from url.
+// Note: rc must be closed after finishing as other ReadCloser.
+func (f *Filer) Download(fileURL string) (string, io.ReadCloser, error) {
+	fileName, rc, err := f.HTTPClient.DownloadFromURL(fileURL)
+	return fileName, rc, err
 }
 
 // UploadFile a file
