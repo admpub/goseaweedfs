@@ -2,6 +2,7 @@ package model
 
 import (
 	"encoding/json"
+	"io"
 	"strings"
 
 	"github.com/admpub/goseaweedfs/libs"
@@ -83,6 +84,29 @@ func (f *Filer) UploadFile(filePath, newFilerPath, collection, ttl string) (resu
 	}
 
 	data, _, err := f.HTTPClient.Upload(f.URL+newFilerPath, filePath, fp.Reader, fp.IsGzipped, fp.MimeType)
+	if err != nil {
+		return
+	}
+
+	result = &FilerUploadResult{}
+	if err = json.Unmarshal(data, result); err != nil {
+		return
+	}
+
+	return
+}
+
+// Upload file by reader
+func (f *Filer) Upload(reader io.Reader, fileSize int64, newFilerPath, collection, ttl string) (result *FilerUploadResult, err error) {
+	fp := NewFilePartFromReader(reader, newFilerPath, fileSize)
+	fp.Collection = collection
+	fp.TTL = ttl
+
+	if !strings.HasPrefix(newFilerPath, "/") {
+		newFilerPath = "/" + newFilerPath
+	}
+
+	data, _, err := f.HTTPClient.Upload(f.URL+newFilerPath, newFilerPath, fp.Reader, fp.IsGzipped, fp.MimeType)
 	if err != nil {
 		return
 	}
